@@ -4,6 +4,6 @@
 # 27/03/2019
 
 #Sets the value of the brightness level. (Can use 1-3)
-echo 1 | tee /sys/class/leds/asus::kbd_backlight/brightness
-echo "Keyboard backlight enabled at $(date)" >> /home/kevin/scripts.log
+echo 1 | tee /sys/class/leds/asus::kbd_backlight/brightness || echo "Keyboard backlight failed with exit 1 at $(date)" >> /home/"$USER"/scripts.log && exit 1
+echo "Keyboard backlight enabled at $(date)" >> /home/"$USER"/scripts.log
 notify-send "Keyboard Backlight enabled" --urgency=normal
